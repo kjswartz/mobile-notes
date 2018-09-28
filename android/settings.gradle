@@ -1,0 +1,3 @@
+rootProject.name = 'MobileNotes'
+
+include ':app'
