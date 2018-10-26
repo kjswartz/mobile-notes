@@ -1,13 +1,20 @@
 // SignUp.js
 import React from 'react'
+import firebase from 'react-native-firebase'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+
 export default class SignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null }
-handleSignUp = () => {
-  // TODO: Firebase stuff...
-  console.log('handleSignUp')
-}
-render() {
+  
+  handleSignUp = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <Text>Sign Up</Text>
@@ -39,6 +46,7 @@ render() {
     )
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

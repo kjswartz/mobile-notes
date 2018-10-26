@@ -7,6 +7,8 @@ target 'MobileNotes' do
 
   # Pods for MobileNotes
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'MobileNotesTests' do
     inherit! :search_paths
